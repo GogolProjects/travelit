@@ -21,7 +21,7 @@ export default function RootLayout({
     className={cn(
       'bg-white text-slate-900 antialiased light', 
       inter.className)}>
-      <body className='min-h-screen pt-12 bg-slate-50 antialiased'>
+      <body className='min-h-screen pt-12 bg-teal-50 antialiased'>
         <Nav/>
         <div className='conatiner max-w-7xl mx-auto h-full pt-12'>{children}</div>
         </body>
