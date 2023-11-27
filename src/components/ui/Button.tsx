@@ -1,4 +1,4 @@
-import { cn } from '../lib/utils'
+import { cn } from '../../lib/utils'
 import { cva, VariantProps } from 'class-variance-authority'
 import { Loader2 } from 'lucide-react'
 import * as React from 'react'
@@ -9,7 +9,7 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          'bg-zinc-900 text-zinc-100 hover:bg-zinc-800',
+          'bg-lime-800 text-zinc-100 hover:bg-lime-700 border-slate-300 border-2',
         destructive: 'text-white hover:bg-red-600 dark:hover:bg-red-600',
         outline:
           'bg-zinc-100 text-zinc-900 hover:bg-zinc-200 outline outline-1 outline-zinc-300',
