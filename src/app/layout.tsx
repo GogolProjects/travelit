@@ -2,6 +2,7 @@ import { Inter } from 'next/font/google'
 import '@/src/style/globals.css'
 import { cn } from '../lib/utils'
 import Nav from '../components/Nav'
+import { Toaster } from '../components/ui/Toaster'
 
 
 
@@ -29,6 +30,7 @@ export default function RootLayout({
         <div className='container max-w-7xl mx-auto h-full pt-12'>
           {children}
           </div>
+          <Toaster />
         </body>
     </html>
   )
