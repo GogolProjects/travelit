@@ -1,4 +1,4 @@
-import {NextAuthOptions} from "next-auth"
+import {NextAuthOptions, getServerSession} from "next-auth"
 import { db } from "./db"
 import {PrismaAdapter} from "@next-auth/prisma-adapter"
 import GoogleProvider from "next-auth/providers/google"
@@ -8,7 +8,7 @@ import {nanoid} from "nanoid"
 export const authOptions: NextAuthOptions = {
     adapter: PrismaAdapter(db),
     session: {
-        strategy: 'jwt'
+        strategy: 'jwt',
     },
     pages: {
         signIn: '/sign-in'
@@ -40,7 +40,7 @@ export const authOptions: NextAuthOptions = {
                 },
             })
 
-            if(!dbUser){
+            if (!dbUser){
                 token.id = user!.id
                 return token
             }
@@ -48,7 +48,7 @@ export const authOptions: NextAuthOptions = {
             if(!dbUser.username){
                 await db.user.update ({
                     where: {
-                        id: dbUser.id
+                        id: dbUser.id,
                     },
                     data: {
                         username: nanoid(10),
@@ -67,8 +67,9 @@ export const authOptions: NextAuthOptions = {
 
         redirect(){
             return '/'
-        }
+        },
     },
 
-   
 }
+
+export const getAuthSession = () => getServerSession(authOptions);
