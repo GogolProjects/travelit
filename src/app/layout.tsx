@@ -3,6 +3,7 @@ import '@/src/style/globals.css'
 import { cn } from '../lib/utils'
 import Nav from '../components/Nav'
 import { Toaster } from '../components/ui/Toaster'
+import Providers from '../components/Providers'
 
 
 
@@ -28,6 +29,7 @@ export default function RootLayout({
       inter.className
       )}>
       <body className='min-h-screen pt-12 bg-lime-100 antialiased'>
+        <Providers>
         <Nav/>
 
         {authModal}
@@ -36,6 +38,7 @@ export default function RootLayout({
           {children}
           </div>
           <Toaster />
+          </Providers>
         </body>
     </html>
   )

@@ -9,7 +9,7 @@ const Nav = async ()=> {
     const session = await getAuthSession()
     return (
     <div className='fixed top-0 inset-x-0 h-fit bg-green-950 border-b- border-slate-300 z-[10] py-2'>
-        <div className='continer max-w-7xl h-full mx-auto flex items-center justify-between gap-2'> 
+        <div className='continer max-w-7xl h-full mx-auto mr-6 flex items-center justify-between gap-2'> 
         {/*logo*/}
 
         <Link href='/' className='flex gap-5 items-center'>

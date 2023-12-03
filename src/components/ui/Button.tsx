@@ -12,7 +12,7 @@ const buttonVariants = cva(
           'bg-lime-800 text-zinc-100 hover:bg-lime-700 border-slate-300 border-2',
         destructive: 'text-white hover:bg-red-600 dark:hover:bg-red-600',
         outline:
-          'bg-zinc-100 text-zinc-900 hover:bg-zinc-200 outline outline-1 outline-zinc-300',
+          'bg-lime-800 text-slate-100 hover:bg-lime-700 outline outline-1 outline-zinc-300',
         subtle:
           'hover:bg-zinc-200 bg-zinc-100 text-zinc-900',
         ghost:

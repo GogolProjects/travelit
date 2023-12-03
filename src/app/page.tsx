@@ -10,13 +10,13 @@ export default function Home(){
                 {/*travel*/}
                 {/*subreddit info*/}
                 <div className="overflow-hidden h-fit rounded-lg border border-slate-300 order-first md:order-last">
-                    <div className="bg-lime-700 px-6 py-4">
+                    <div className="bg-lime-900 px-6 py-4">
                         <p className="font-semibold text-slate-100 py-3 flex items-center gap-1.5">
                             <HomeIcon className="w-4 h-4"/>
                             Home
                         </p>
                     </div>
-                    <div className="-my-3 divide-y divide-slate-300 px-6 py-4 text-sm leading-6">
+                    <div className="-my-3 divide-y bg-lime-50 divide-slate-300 px-6 py-4 text-sm leading-6">
                         <div className="flex justify-between gap-x-4 py-3">
                             <p className="text-slate-800">
                                 Your pesonal Travleit homepage. Come here to chceck in with your favourite comunities.

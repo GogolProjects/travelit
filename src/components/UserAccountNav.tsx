@@ -22,23 +22,23 @@ const UserAccountNav: FC<UserAccountNavProps> = ({user}) => {
       />
     </DropdownMenuTrigger>
 
-      <DropdownMenuContent className='bg-lime-600 border-black' align='end'>
-        <div className='flex items-center justify-start gap-2 p-2'>
+      <DropdownMenuContent className='bg-lime-800 border-slate-800 text-slate-200' align='end'>
+        <div className='flex items-center justify-start gap-2 p-3'>
           <div className='flex flex-col space-y-1 leading-none'>
-            {user.name && <p className='font-bold text-slate-800'>{user.name}</p>}
-            {user.email && <p className='-w-[200px] truncate font-bold text-sm text-slate-800'>{user.email}</p>}
+            {user.name && <p className='font-semibold text-slate-200'>{user.name}</p>}
+            {user.email && <p className='-w-[200px] truncate font-semibold text-slate-200'>{user.email}</p>}
 
           </div>
         </div>
 
         <DropdownMenuSeparator className='bg-black' />
-            <DropdownMenuItem asChild className='font-bold'>
+            <DropdownMenuItem asChild>
               <Link href='/'>Home</Link>
             </DropdownMenuItem>
-            <DropdownMenuItem asChild className='font-bold'>
+            <DropdownMenuItem asChild>
               <Link href='/r/create'>Create community</Link>
             </DropdownMenuItem>
-            <DropdownMenuItem asChild className='font-bold'>
+            <DropdownMenuItem asChild>
               <Link href='/settings'>Settings</Link>
             </DropdownMenuItem>
         <DropdownMenuSeparator className='bg-black'/>
@@ -48,7 +48,7 @@ const UserAccountNav: FC<UserAccountNavProps> = ({user}) => {
             callbackUrl: `${window.location.origin}/sign-in`,
           })
         }}
-        className='cursor-pointer font-bold'>
+        className='cursor-pointer font-semibold'>
           Sign out
           </DropdownMenuItem>
       </DropdownMenuContent>
