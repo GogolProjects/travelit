@@ -15,7 +15,7 @@ const Page = () =>{
     const router = useRouter();
     const {loginToast} = useCustomToast();
     
-const {mutate: createCommunity, isPending} = useMutation({
+const {mutate: createCommunity, isLoading} = useMutation({
     mutationFn: async () => {
         const payload: CreateSubredditPayload = {
                name: input,
@@ -46,7 +46,7 @@ const {mutate: createCommunity, isPending} = useMutation({
         }
         toast({
             title: 'There was an error.',
-            description: 'Could nor create subreddit.',
+            description: 'Could not create subreddit.',
             variant: 'destructive',
         })
     },
@@ -85,7 +85,7 @@ const {mutate: createCommunity, isPending} = useMutation({
                     <Button variant='subtle' onClick={() => router.back() }>Cancel
                     </Button>
                     <Button 
-                    isLoading={isPending}
+                    isLoading={isLoading}
                      disabled={input.length === 0}
                      onClick={() => createCommunity() }>
                         Create community

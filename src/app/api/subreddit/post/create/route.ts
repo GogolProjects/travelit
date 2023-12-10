@@ -1,6 +1,7 @@
 import { getAuthSession } from "@/src/lib/auth";
 import { db } from "@/src/lib/db";
-import { SubredditSubscriptionValidator} from "@/src/lib/validators/subreddit";
+import { PostValidator } from "@/src/lib/validators/post";
+
 import { z } from "zod";
 
 export async function POST(req: Request) {
@@ -13,7 +14,7 @@ export async function POST(req: Request) {
 
         const body = await req.json()
 
-        const {subredditId} = SubredditSubscriptionValidator.parse(body)
+        const {subredditId, title, content} = PostValidator.parse(body)
 
         const subscriptionExists = await db.subscription.findFirst({
             where: {
@@ -23,25 +24,30 @@ export async function POST(req: Request) {
 
         })
 
-        if(subscriptionExists){
-            return new Response('You are aleready subscribed to this travelit.', {status: 400,
+        if(!subscriptionExists){
+            return new Response('Subscribe to post', {status: 400,
             })
         }
 
-        await db.subscription.create({
+        await db.post.create({
             data: {
+                title,
+                content,
+                authorId: session.user.id,
                 subredditId,
-                userId: session.user.id,
-            },
+                },
         })
-        return new Response(subredditId)
+
+        return new Response('OK')
 
     } catch (error){
-        (error)
+        
         if(error instanceof z.ZodError){
-            return new Response('Invalid request data passed', { status: 422 })
+            return new Response('Invalid request data passed', { status: 422,
+             })
         }
 
-        return new Response('Could not subscribe, please try again later', {status: 500})
+        return new Response('Could not post to travelit at this time, please try again later', {status: 500,
+        })
     }
 }

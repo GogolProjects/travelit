@@ -24,7 +24,7 @@ export async function POST(req: Request) {
         })
 
         if(!subscriptionExists){
-            return new Response('You are not subscribed to this subreddit.', {status: 400,
+            return new Response('You are not subscribed to this travelit.', {status: 400,
             })
         }
         
@@ -36,7 +36,7 @@ export async function POST(req: Request) {
         })
 
         if(subreddit){
-            return new Response('You can not uncubscribe from Your own subreddit', {status: 400,
+            return new Response('You can not uncubscribe from Your own travelit', {status: 400,
             })
         }
         await db.subscription.delete({

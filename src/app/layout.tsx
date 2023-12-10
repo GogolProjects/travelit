@@ -1,4 +1,4 @@
-import { Inter } from 'next/font/google'
+import { Inter} from 'next/font/google'
 import '@/src/style/globals.css'
 import { cn } from '../lib/utils'
 import Nav from '../components/Nav'
@@ -13,7 +13,9 @@ export const metadata = {
   description: 'A forum where we share our trip expiriance and hacks',
 }
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({
+  subsets: ['latin']
+})
 
 export default function RootLayout({
   children,

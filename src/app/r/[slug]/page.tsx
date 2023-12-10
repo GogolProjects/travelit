@@ -1,4 +1,5 @@
 import MiniCreatePost from '@/src/components/MiniCreatePost'
+import PostTravel from '@/src/components/PostTravel'
 import { INFINITE_SCROLLING_PAGINATION_RESULTS } from '@/src/config'
 import { getAuthSession } from '@/src/lib/auth'
 import { db } from '@/src/lib/db'
@@ -27,7 +28,7 @@ const page =  async ({params}: PageProps) => {
                         subreddit: true,
                     },
                     
-                    take: INFINITE_SCROLLING_PAGINATION_RESULTS
+                    take: INFINITE_SCROLLING_PAGINATION_RESULTS,
                 
                 
                 },
@@ -41,10 +42,12 @@ const page =  async ({params}: PageProps) => {
              </h1>
              <MiniCreatePost session={session} />
 
+             <PostTravel initialPosts={subreddit.posts} subredditName={subreddit.name} />
+
              
 
         </>
     );
-}
+    }
  
 export default page;

@@ -23,10 +23,10 @@ interface PageProps{
         <div className="flex flex-col items-start gap-6">
             <div className="border-b border-slate-200 pb-5">
                 <div className="-ml-2 -mt-2 flex flex-wrap items-baseline">
-                    <h3 className="ml-2 mt-2 text-base font-semibold leading-6 text-slate-900">
+                    <h3 className="ml-2 mt-2 font-semibold leading-6 text-2xl text-slate-900">
                         Create post
                     </h3>
-                    <p className="ml-2 mt-1 truncate text-sm text-slate-700">in r/{params.slug}</p>
+                    <p className="ml-2 mt-1 truncate text-lg font-semibold text-slate-700">in r/{params.slug}</p>
                 </div>
             </div>
 

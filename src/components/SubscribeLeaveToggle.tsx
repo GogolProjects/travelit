@@ -25,7 +25,7 @@ interface SubscribeLeaveToffleProps{
     const router = useRouter()
 
 
-    const {mutate: subscribe, isPending: isSubLoading} = useMutation({
+    const {mutate: subscribe, isLoading: isSubLoading} = useMutation({
       mutationFn: async () => {
         const payload: SubscribeToSubredditPayload = {
             subredditId,
@@ -61,7 +61,7 @@ interface SubscribeLeaveToffleProps{
 
     })
 
-    const {mutate: unsubscribe, isPending: isUnsubLoading} = useMutation({
+    const {mutate: unsubscribe, isLoading: isUnsubLoading} = useMutation({
       mutationFn: async () => {
         const payload: SubscribeToSubredditPayload = {
             subredditId,

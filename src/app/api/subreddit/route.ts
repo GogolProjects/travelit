@@ -21,7 +21,7 @@ export async function POST(req: Request) {
         })
 
         if(subredditExists){
-            return new Response('Subreddit alerady exists', {status: 409})
+            return new Response('Travelit alerady exists', {status: 409})
         }
 
         const subreddit = await db.subreddit.create({
