@@ -1,10 +1,10 @@
 "use client"
 
-import  { FC, useRef } from 'react'
+import  { FC, useEffect, useRef } from 'react'
 import { ExtendedPost } from '../types/db'
 import {useIntersection } from '@mantine/hooks'
 import { useInfiniteQuery } from '@tanstack/react-query'
-import { INFINITE_SCROLLING_PAGINATION_RESULTS } from '../config'
+import { INFINITE_SCROLL_PAGINATION_RESULTS} from '../config'
 import axios from 'axios'
 import { useSession } from 'next-auth/react'
 import Post from './Post'
@@ -28,7 +28,7 @@ const PostTravel: FC<PostTravelProps> = ({initialPosts, subredditName}) => {
     const {data, fetchNextPage, isFetchingNextPage} = useInfiniteQuery(
             ['infinite-query'],
             async ({ pageParam = 1 })  =>{
-                const query = `/api/posts?limit=${INFINITE_SCROLLING_PAGINATION_RESULTS}&page=${pageParam}` +
+               const query =  `/api/posts?limit=${INFINITE_SCROLL_PAGINATION_RESULTS}&page=${pageParam}` +
                 (!!subredditName ? `&subredditName=${subredditName}` : '')
 
                 const { data} = await axios.get(query)
@@ -41,6 +41,12 @@ const PostTravel: FC<PostTravelProps> = ({initialPosts, subredditName}) => {
                 },
             }
      )
+
+     useEffect(() => {
+        if(entry?.isIntersecting){
+            fetchNextPage()
+        }
+     }, [entry, fetchNextPage])
         const posts = data?.pages.flatMap ((page) => page) ?? initialPosts
 
   return (
@@ -59,13 +65,26 @@ const PostTravel: FC<PostTravelProps> = ({initialPosts, subredditName}) => {
             return (
                 <li className='list-none' key={post.id} ref={ref}>
 
-                        <Post commentAmt={post.comments.length} post={post} subredditName={post.subreddit.name}/>
+                        <Post 
+                        currentVote={currentVote} 
+                        votesAmt={votesAmt}
+                        commentAmt={post.comments.length} 
+                        post={post} 
+                        subredditName={post.subreddit.name}
+                        />
                     
                 </li>
             )
            }
            else {
-             return <Post key={post.id} commentAmt={post.comments.length} post={post} subredditName={post.subreddit.name}/>
+             return <Post 
+             currentVote={currentVote} 
+             votesAmt={votesAmt}
+             key={post.id} 
+             commentAmt={post.comments.length} 
+             post={post} 
+             subredditName={post.subreddit.name}
+             />
            }
         })}
 

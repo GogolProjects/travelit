@@ -1,6 +1,6 @@
 import MiniCreatePost from '@/src/components/MiniCreatePost'
 import PostTravel from '@/src/components/PostTravel'
-import { INFINITE_SCROLLING_PAGINATION_RESULTS } from '@/src/config'
+import { INFINITE_SCROLL_PAGINATION_RESULTS } from '@/src/config'
 import { getAuthSession } from '@/src/lib/auth'
 import { db } from '@/src/lib/db'
 import { notFound } from 'next/navigation'
@@ -27,8 +27,11 @@ const page =  async ({params}: PageProps) => {
                         comments: true,
                         subreddit: true,
                     },
+                    orderBy: {
+                        createdAt: 'desc'
+                    },
                     
-                    take: INFINITE_SCROLLING_PAGINATION_RESULTS,
+                    take: INFINITE_SCROLL_PAGINATION_RESULTS,
                 
                 
                 },

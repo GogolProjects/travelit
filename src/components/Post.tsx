@@ -4,24 +4,37 @@ import { formatTimeToNow } from '../lib/utils'
 import Link from 'next/link'
 import { MessageSquare } from 'lucide-react'
 import EditorOutput from './EditorOutput'
+import PostVoteClient from './post-vote/PostVoteClient'
+
+type PartialVote = Pick<Vote, 'type'>
 
 interface PostProps {
-     post: Post & {
+      subredditName: string
+      post: Post & {
         author: User
         votes: Vote[]
     } 
     commentAmt: number
-    subredditName: string
-  
-
+    votesAmt: number
+    currentVote?: PartialVote
 }
-const Post: FC<PostProps> = ({subredditName, post, commentAmt}) => {
+const Post: FC<PostProps> = ({
+    subredditName,
+     post,
+    commentAmt,
+    votesAmt: votesAmt,
+    currentVote,
+    }) => {
 
     const pRef = useRef<HTMLDivElement>(null)
   return (
     <div className='rounded-md bg-slate-50 shadow'>
         <div className='px-6 py-4 flex justify-between'>
-            {/* TODO:Post votes */}
+           <PostVoteClient 
+           postId={post.id} 
+           initialVote={currentVote?.type} 
+           initialVotesAmt={votesAmt}
+           />
 
             <div className='w-0 flex-1'>
                 <div className='max-h-40 mt-1 text-base text-slate-800'>
