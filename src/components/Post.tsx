@@ -40,7 +40,8 @@ const Post: FC<PostProps> = ({
                 <div className='max-h-40 mt-1 text-base text-slate-800'>
                     {subredditName? (
                      <>
-                        <a className='underline underline-offset-2 font-semibold' href={`/r/${subredditName}`}>
+                        <a className='underline underline-offset-2 font-semibold' 
+                        href={`/r/${subredditName}`}>
                           
                           
                           r/{subredditName}
@@ -67,8 +68,8 @@ const Post: FC<PostProps> = ({
             </div>
         </div>
 
-                     <div className='bg-slate-100 z-20 text-sm p-4 sm:px-6'>
-                        <a className='w-fit flex items-center gap-2' href={`/r/${subredditName}/post/${post.id}`}>
+                     <div className='bg-lime-800 z-20 text-sm px-4 py-4 sm:px-6'>
+                        <a className='text-slate-50 w-fit flex items-center gap-2' href={`/r/${subredditName}/post/${post.id}`}>
                         <MessageSquare className='h-4 w-4'/> {commentAmt} comments
                         </a>
                     </div>

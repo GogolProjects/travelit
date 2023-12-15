@@ -21,7 +21,7 @@ interface PageProps{
 export const dynamic = 'force-dynamic'
 export const fetchCatch = 'force-no-sotre'
 
-const page = async ({params}: PageProps) => {
+const TravelitPostPage = async ({params}: PageProps) => {
 
     const cachedPost = await redis.hgetall(`post:${params.postId}`) as CachedPost
 
@@ -43,7 +43,7 @@ const page = async ({params}: PageProps) => {
 
   return (
     <div>
-        <div className='h-full flex flex-col sm:flex-row items-center sm:items-start justify-between'>
+        <div className='h-full flex flex-row  items-center sm:items-start justify-between'>
             <Suspense fallback={<PostVoteShell />}>
                 <PostVoteServer 
                 postId={post?.id ?? cachedPost.id}
@@ -59,7 +59,7 @@ const page = async ({params}: PageProps) => {
                 }}/>
             </Suspense>
 
-            <div className='sm:w-0 w-full flex-1 bg-slate-100 p4 rounded-sm'>
+            <div className='sm:w-0 w-full flex-1 bg-slate-100 p-4 rounded-sm'>
                 <p className='max-h-40 mt-1 truncate text-xs text-slate-500'>
                 Postet by u/{post?.author.username ?? cachedPost.authorUsername}{' '}
                 {formatTimeToNow(new Date(post?.createdAt ?? cachedPost.createdAt))}
@@ -69,9 +69,11 @@ const page = async ({params}: PageProps) => {
                 </h1>
 
                 <EditorOutput content={post?.content ?? cachedPost.content}/>
+                
                 <Suspense 
                 fallback={
                 <Loader2 className='h-5 w-5 animate-spin text-slate-600'/>}>
+                    
                     <CommentSection postId={post?.id ?? cachedPost.id} />
                 </Suspense>
             </div>
@@ -81,7 +83,8 @@ const page = async ({params}: PageProps) => {
 }
 
 function PostVoteShell(){
-    return <div className='flex items-center flex-col pr-6 w-20'>
+    return (
+    <div className='flex items-center flex-col pr-6 w-20'>
         {/*upvote*/}
 
         <div className={buttonVariants({variant: 'ghost'})}>
@@ -98,6 +101,7 @@ function PostVoteShell(){
             <ArrowBigDown className='h-5 w-5 text-slate-800' />
         </div>
     </div>
+    )
 }
 
-export default page
+export default TravelitPostPage

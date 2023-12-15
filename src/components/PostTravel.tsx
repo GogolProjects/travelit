@@ -77,14 +77,14 @@ const PostTravel: FC<PostTravelProps> = ({initialPosts, subredditName}) => {
             )
            }
            else {
-             return <Post 
+             return (<Post 
              currentVote={currentVote} 
              votesAmt={votesAmt}
              key={post.id} 
              commentAmt={post.comments.length} 
              post={post} 
              subredditName={post.subreddit.name}
-             />
+             />)
            }
         })}
 
