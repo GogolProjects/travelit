@@ -30,7 +30,7 @@ export default function RootLayout({
       'bg-teal text-slate-900 antialiased light', 
       inter.className
       )}>
-      <body className='min-h-screen pt-12 bg-lime-100 antialiased'>
+      <body className='min-h-screen pt-12 bg-lime-50 antialiased'>
         <Providers>
         <Nav/>
 

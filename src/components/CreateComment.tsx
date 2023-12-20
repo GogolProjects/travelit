@@ -63,7 +63,7 @@ interface CreateCommentProps{
             value={input} 
             onChange={(e) => setInput(e.target.value)} 
             rows = {1}
-            placeholder='Wanna ask something??'
+            placeholder='What wolud You like to add??'
             />
             <div className='mt-2 flex justify-end'>
               <Button 

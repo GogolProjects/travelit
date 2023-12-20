@@ -1,4 +1,4 @@
-import { FC } from "react"
+
 import { getAuthSession } from "../lib/auth"
 import { db } from "../lib/db"
 import PostComment from "./PostComment"
@@ -33,7 +33,9 @@ const CommentSection  = async ({postId}: CommentSectionProps) => {
         <hr className="w-full h-px my-6"/>
         <CreateComment postId={postId}  />
         <div className="flex flex-col gap-w-6 mt-4">
-            {comments.filter((comment) => !comment.replyToId).map((topLevelComment) =>{
+            {comments
+            .filter((comment) => !comment.replyToId)
+            .map((topLevelComment) =>{
                
             const topLevelCommentAmt = topLevelComment.votes.reduce((acc,vote) => {
                 if(vote.type === 'UP') return acc + 1
@@ -50,9 +52,40 @@ const CommentSection  = async ({postId}: CommentSectionProps) => {
 
                     <div key={topLevelComment.id} className="flex flex-col">
                         <div className="mb-2">
-                        <PostComment votesAmt={topLevelCommentAmt}postId={postId} currentVote={topLevelCommentVote} comment={topLevelComment}/>
+                        <PostComment 
+                        votesAmt={topLevelCommentAmt} 
+                        postId={postId} 
+                        currentVote={topLevelCommentVote} 
+                        comment={topLevelComment}/>
 
                         </div>
+                        {/*render replies*/ }
+
+                        {topLevelComment.replies
+                        .sort(
+                            (a,b) => b.votes.length - a.votes.length
+                            )
+                        .map((reply) => {
+
+                                const replyVotesAmt = reply.votes.reduce((acc,vote) => {
+                                    if(vote.type === 'UP') return acc + 1
+                                    if(vote.type === 'DOWN') return acc - 1
+                    
+                                    return acc
+                    
+                                }, 0)
+
+                                const replyVote = reply.votes.find((vote) => vote.userId === session?.user.id)
+
+                                return (
+                                <div key={reply.id} className="ml-2 py-2 pl-4 border-l-2 border-slate-200">
+                                    <PostComment
+                                     comment={reply} 
+                                     currentVote={replyVote}
+                                     votesAmt={replyVotesAmt}
+                                    postId={postId}/>
+                                </div>)
+                            })}
                     </div>
                 )
              })}
