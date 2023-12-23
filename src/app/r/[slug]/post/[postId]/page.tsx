@@ -10,7 +10,7 @@ import { CachedPost } from '@/src/types/redis'
 import { Post, User, Vote } from '@prisma/client'
 import { ArrowBigDown, ArrowBigUp, Loader2 } from 'lucide-react'
 import { notFound } from 'next/navigation'
-import React, { FC, Suspense } from 'react'
+import  { Suspense } from 'react'
 
 interface PageProps{
     params: {
@@ -23,7 +23,7 @@ export const fetchCache = 'force-no-sotre'
 
 const TravelitPostPage = async ({params}: PageProps) => {
 
-    const cachedPost = await redis.hgetall(`post:${params.postId}`) as CachedPost
+    const cachedPost = (await redis.hgetall(`post:${params.postId}`)) as CachedPost
 
     let post: (Post & {votes: Vote[]; author: User}) | null = null
 
