@@ -5,6 +5,9 @@ import { getAuthSession } from "../lib/auth";
 import GeneralTravelit from "../components/GeneralTravelit";
 import CustomTravelit from "../components/CustomTravelit";
 
+export const dynamic = 'force-dynamic'
+export const fetchCache = 'force-no-store'
+
 export default async function Home(){
    const session = await getAuthSession( )
 
