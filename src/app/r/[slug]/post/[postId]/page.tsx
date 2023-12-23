@@ -19,7 +19,7 @@ interface PageProps{
 }
 
 export const dynamic = 'force-dynamic'
-export const fetchCatch = 'force-no-sotre'
+export const fetchCatche = 'force-no-sotre'
 
 const TravelitPostPage = async ({params}: PageProps) => {
 
