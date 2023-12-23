@@ -1,4 +1,4 @@
-import { Inter} from 'next/font/google'
+import {  Alkatra} from 'next/font/google'
 import '@/src/style/globals.css'
 import { cn } from '../lib/utils'
 import Nav from '../components/Nav'
@@ -13,8 +13,9 @@ export const metadata = {
   description: 'A forum where we share our trip expiriance and hacks',
 }
 
-const inter = Inter({
-  subsets: ['latin']
+const alkatra = Alkatra ({
+  subsets: ['latin'],
+  weight: '400'
 })
 
 export default function RootLayout({
@@ -28,7 +29,7 @@ export default function RootLayout({
     <html lang="en" 
     className={cn(
       'bg-teal text-slate-900 antialiased light', 
-      inter.className
+      alkatra.className
       )}>
       <body className='min-h-screen pt-12 bg-lime-50 antialiased'>
         <Providers>

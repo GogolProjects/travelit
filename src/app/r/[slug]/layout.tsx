@@ -64,7 +64,7 @@ const Layout = async ({
                     </div>
                     <div className="hidden md:block overflow-hidden h-fit rounded-lg border border-slate-400 order-first md:order-last bg-lime-800">
                         <div className="px-6 py-4">
-                            <p className="font-semibold py-3 text-slate-50 text-lg">About t/{subreddit.name}
+                            <p className="font-semibold py-3 text-slate-50 text-lg">About r/{subreddit.name}
                             </p>
                         </div>
                          <dl className="divide-y divide-slate-100 px-6 py-4 text-sm leading-6 bg-slate-50">
