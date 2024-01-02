@@ -10,12 +10,12 @@ export const fetchCache = 'force-no-store'
 
 export default async function Home(){
    const session = await getAuthSession( )
-    const radiobutton:boolean = false
+
     return (
         <>
             <h1 className="font-bold text-3xl md:text-4xl">Your Travelit</h1>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-y-4 md:gap-x-4 py-6">
-                {!!session && radiobutton ? <CustomTravelit /> : <GeneralTravelit />}
+                {!!session  ? <CustomTravelit /> : <GeneralTravelit />}
                 
                 
                 {/*subreddit info*/}
