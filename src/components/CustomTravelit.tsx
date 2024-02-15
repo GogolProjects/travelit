@@ -38,7 +38,8 @@ const CustomTravelit =async () => {
     }) 
        
       
-        return(<PostTravel initialPosts={posts}/>)
+        return <PostTravel initialPosts={posts}/>
+       
     }
        
 export default CustomTravelit

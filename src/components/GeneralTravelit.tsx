@@ -17,5 +17,6 @@ const GeneralTravelit =async () => {
     })
 
     return <PostTravel initialPosts={posts}/>
+  
 }
 export default GeneralTravelit
