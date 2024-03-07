@@ -4,11 +4,8 @@ import { z } from "zod"
 
 export async function GET(req: Request){
     const url = new URL(req.url)
-
     const session = await getAuthSession()
-
     let followedCommunitiesIds: string[] = []
-
     if(session){
         const followedCommunities = await db.subscription.findMany({
             where: {
@@ -20,12 +17,10 @@ export async function GET(req: Request){
             },
 
         })
-
         followedCommunitiesIds = followedCommunities.map(
             ({subreddit}) => subreddit.id
         )
     }
-
     try{
         const {limit, page, subredditName} = z.object({
             limit: z.string(),
@@ -36,9 +31,7 @@ export async function GET(req: Request){
             limit: url.searchParams.get('limit'),
             page: url.searchParams.get('page'),
         })
-
-        let whereClause = {}
-        
+        let whereClause = {}    
         if(subredditName){
             whereClause = {
                 subreddit: {
@@ -54,7 +47,6 @@ export async function GET(req: Request){
                 },
             }
         }
-
         const posts = await db.post.findMany({
             take: parseInt(limit),
             skip: (parseInt(page) -1) * parseInt(limit),
