@@ -26,7 +26,6 @@ const TravelitPostPage = async ({params}: PageProps) => {
     const cachedPost = (await redis.hgetall(`post:${params.postId}`)) as CachedPost
 
     let post: (Post & {votes: Vote[]; author: User}) | null = null
-
     if(!cachedPost){
         post = await db.post.findFirst({
             where: {
@@ -38,7 +37,6 @@ const TravelitPostPage = async ({params}: PageProps) => {
             },
         })
     }
-
     if(!post && !cachedPost) return notFound()
 
   return (
@@ -58,7 +56,6 @@ const TravelitPostPage = async ({params}: PageProps) => {
                     })
                 }}/>
             </Suspense>
-
             <div className='sm:w-0 w-full flex-1 bg-slate-100 p-4 rounded-sm'>
                 <p className='max-h-40 mt-1 truncate text-xs text-slate-500'>
                 Postet by r/{post?.author.username ?? cachedPost.authorUsername}{' '}
@@ -81,7 +78,6 @@ const TravelitPostPage = async ({params}: PageProps) => {
     </div>
   )
 }
-
 function PostVoteShell(){
     return (
     <div className='flex items-center flex-col pr-6 w-20'>
