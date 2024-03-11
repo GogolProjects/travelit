@@ -68,8 +68,11 @@ const {mutate: createCommunity, isLoading} = useMutation({
                 <div>
                     <p className='text-lg font-medium'>Name</p>
                     <p className='text-xs pb-2'>
-                        Community names including capitalization cannot be changed.
+                        Community names including capitalization cannot be changed. 
+                        <br/> 
+                        Your community name has to be one word. For example: TravelitExample, Travel
                     </p>
+                  
                     <div className='relative'>
                         <p className='absolute text-sm left-0 w-8 inset-y-0 grid place-items-center text-slate-500'>r/
 
