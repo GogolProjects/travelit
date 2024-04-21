@@ -14,8 +14,6 @@ interface SearchBarProps{}
 
 const SearchBar: FC<SearchBarProps> = ({}) => {
     const [input, setInput] = useState<string>('')
-
-   
     const {
         data: queryResults, 
         refetch,
@@ -36,9 +34,11 @@ const SearchBar: FC<SearchBarProps> = ({}) => {
     const request = debounce(async () => {
         await refetch()
     }, 300)
+
     const debounceRequest = useCallback(() => {
         request()
     }, [])
+
     const router = useRouter()
     const commandRef = useRef<HTMLDivElement>(null)
     const pathname = usePathname()
@@ -50,6 +50,7 @@ const SearchBar: FC<SearchBarProps> = ({}) => {
     useEffect(() => {
         setInput('')
     }, [pathname])
+    
   return (
     <Command ref={commandRef} className='relative rounded-lg border max-w-lg z-50 overflow-visible'>
         <CommandInput 

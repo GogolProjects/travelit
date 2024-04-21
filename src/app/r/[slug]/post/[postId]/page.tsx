@@ -58,19 +58,17 @@ const TravelitPostPage = async ({params}: PageProps) => {
             </Suspense>
             <div className='sm:w-0 w-full flex-1 bg-slate-100 p-4 rounded-sm'>
                 <p className='max-h-40 mt-1 truncate text-xs text-slate-500'>
-                Postet by r/{post?.author.username ?? cachedPost.authorUsername}{' '}
-                {formatTimeToNow(new Date(post?.createdAt ?? cachedPost.createdAt))}
+                    Postet by r/{post?.author.username ?? cachedPost.authorUsername}{' '}
+                    {formatTimeToNow(new Date(post?.createdAt ?? cachedPost.createdAt))}
                 </p>
                 <h1 className='text-xl font-semibold py-2 leading-6 text-slate-950'>
                     {post?.title ?? cachedPost.title}
                 </h1>
-
                 <EditorOutput content={post?.content ?? cachedPost.content}/>
-                
+
                 <Suspense 
                 fallback={
-                <Loader2 className='h-5 w-5 animate-spin text-slate-600'/>}>
-                    
+                    <Loader2 className='h-5 w-5 animate-spin text-slate-600'/>}>
                     <CommentSection postId={post?.id ?? cachedPost.id} />
                 </Suspense>
             </div>

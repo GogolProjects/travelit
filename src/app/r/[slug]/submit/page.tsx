@@ -9,11 +9,10 @@ interface PageProps{
     }
 }
 
- const page = async ({params}: PageProps) => {
+const page = async ({params}: PageProps) => {
     const subreddit = await db.subreddit.findFirst({
         where: {
             name: params.slug,
-
         },
     })
 
@@ -31,16 +30,13 @@ interface PageProps{
             </div>
 
             {/*form*/ }
-
             <Editor subredditId={subreddit.id} />
 
             <div className="w-full flex justify-end">
                 <Button type='submit' className="w-full" form="subreddit-post-form">
                     Post
                 </Button>
-
-            </div>
-           
+            </div>          
         </div>
   )
 }

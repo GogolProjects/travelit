@@ -5,9 +5,6 @@ import Nav from '../components/Nav'
 import { Toaster } from '../components/ui/Toaster'
 import Providers from '../components/Providers'
 
-
-
-
 export const metadata = {
   title: 'Travelit',
   description: 'A forum where we share our trip expiriance and hacks',
@@ -27,22 +24,20 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" 
-    className={cn(
-      'bg-teal text-slate-900 antialiased light', 
-      alkatra.className
+      className={cn(
+        'bg-teal text-slate-900 antialiased light', 
+        alkatra.className
       )}>
       <body className='min-h-screen pt-12 bg-lime-50 antialiased'>
         <Providers>
         <Nav/>
-
         {authModal}
-        
         <div className='container max-w-7xl mx-auto h-full pt-12'>
           {children}
-          </div>
-          <Toaster />
-          </Providers>
-        </body>
+        </div>
+        <Toaster />
+        </Providers>
+      </body>
     </html>
   )
 }

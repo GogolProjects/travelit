@@ -2,7 +2,7 @@ import { INFINITE_SCROLL_PAGINATION_RESULTS } from "../config"
 import { db } from "../lib/db"
 import PostTravel from "./PostTravel"
 
-const GeneralTravelit =async () => {
+const GeneralTravelit = async () => {
     const posts = await db.post.findMany({
         orderBy: {
             createdAt: 'desc'
@@ -15,8 +15,6 @@ const GeneralTravelit =async () => {
         },
         take: INFINITE_SCROLL_PAGINATION_RESULTS,
     })
-
     return <PostTravel initialPosts={posts}/>
-  
 }
 export default GeneralTravelit

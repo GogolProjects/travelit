@@ -16,8 +16,6 @@ export default async function Home(){
             <h1 className="font-bold text-3xl md:text-4xl">Your Travelit</h1>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-y-4 md:gap-x-4 py-6">
                 {!!session ? <CustomTravelit /> : <GeneralTravelit />}
-               
-                
                 
                 {/*subreddit info*/}
                 <div className="overflow-hidden h-fit rounded-lg border border-slate-300 order-first md:order-last">
@@ -34,10 +32,10 @@ export default async function Home(){
                             </p>
                         </div>
                         <Link 
-                        className={buttonVariants({
-                            className: 'w-full mt-4 mb-6',
+                            className={buttonVariants({
+                                className: 'w-full mt-4 mb-6',
                             })}
-                             href='/r/create'>
+                            href='/r/create'>
                             Create community
                         </Link>
                     </div>
